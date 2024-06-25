@@ -2,15 +2,17 @@ import { useCatFact } from "./Hook/useCatFact";
 import { Imagenes } from "./components/Imagenes";
 import { Title } from "./components/Title";
 import { useImage } from "./Hook/useImage";
-
+import React from "react";
 
 export default function App() {
-  const { fact, refreshFact  } = useCatFact()
-  const { imageUrl } = useImage({ fact: 'cat' }) 
-   
-  const hanleClick = async () => {
+  const { fact, refreshFact } = useCatFact()
+  const { imageUrl } = useImage({ fact }) 
+
+
+  const handleClick = async () => {
       refreshFact()
  };
+   
  
 
   return (
@@ -18,11 +20,10 @@ export default function App() {
 
       <Title title='App de gatitos'/>
 
-      <button onClick={hanleClick} className=" py-2 px-4 rounded-lg bg-[#721d1d] text-white cursor-pointer hover:bg-white  hover:text-black">
+      <button onClick={handleClick} className=" py-2 px-4 rounded-lg bg-[#721d1d] text-white cursor-pointer hover:bg-white  hover:text-black">
       Refresh img
     </button>
-      
-    
+
       {/* <Imagenes/> */}
       {imageUrl && (<img className="rounded-lg border-2 border-black h-[600px] shadow-gray-900"
           src={imageUrl}
